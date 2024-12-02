@@ -149,6 +149,92 @@ document.addEventListener('DOMContentLoaded', () => {
             e.stopPropagation();
         });
     }
+
+    // FAQ Functionality
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        question.addEventListener('click', () => {
+            const currentlyActive = document.querySelector('.faq-item.active');
+            if (currentlyActive && currentlyActive !== item) {
+                currentlyActive.classList.remove('active');
+            }
+            item.classList.toggle('active');
+        });
+    });
+
+    // Category Filter
+    const categoryBtns = document.querySelectorAll('.category-btn');
+    categoryBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Remove active class from all buttons
+            categoryBtns.forEach(b => b.classList.remove('active'));
+            // Add active class to clicked button
+            btn.classList.add('active');
+            
+            const category = btn.dataset.category;
+            faqItems.forEach(item => {
+                if (category === 'all' || item.dataset.category === category) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    });
+
+    // Search Functionality
+    const searchInput = document.getElementById('faq-search');
+    searchInput.addEventListener('input', (e) => {
+        const searchTerm = e.target.value.toLowerCase();
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question span:last-child').textContent.toLowerCase();
+            const answer = item.querySelector('.faq-answer').textContent.toLowerCase();
+            
+            if (question.includes(searchTerm) || answer.includes(searchTerm)) {
+                item.style.display = 'block';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    });
+
+    // Helpful Button Functionality
+    const helpfulBtns = document.querySelectorAll('.helpful-btn');
+    helpfulBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const countElement = btn.closest('.faq-item').querySelector('.helpful-count');
+            let count = parseInt(countElement.textContent);
+            countElement.textContent = `${count + 1} người thấy hữu ích`;
+            countElement.classList.add('updated');
+            setTimeout(() => countElement.classList.remove('updated'), 1000);
+            btn.disabled = true;
+        });
+    });
+
+    // Share Functionality
+    document.querySelectorAll('.share-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const faqItem = this.closest('.faq-item');
+            const question = faqItem.querySelector('.faq-question span').textContent;
+            const answer = faqItem.querySelector('.faq-answer-content').textContent;
+            
+            if (navigator.share) {
+                navigator.share({
+                    title: 'FAQ - HuuLong Academy',
+                    text: `${question}\n\n${answer}`,
+                    url: window.location.href
+                });
+            } else {
+                // Fallback copy to clipboard
+                navigator.clipboard.writeText(`${question}\n\n${answer}`);
+                showToast('Đã sao chép vào clipboard!');
+            }
+        });
+    });
+
+    // Load More
 });
 
 // Language translations
