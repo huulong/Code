@@ -201,142 +201,26 @@
             }
         }
 
-        /* Responsive Design */
-        /* Mobile (320px - 480px) */
-        @media screen and (max-width: 480px) {
-            /* Hero Section */
-            header h1 {
-                font-size: 2rem !important;
-            }
-            
-            header p {
-                font-size: 1rem !important;
-                padding: 0 1rem;
-            }
+        /* Debug styles */
+        #mobile-lang-dropdown:not(.hidden) {
+            display: block !important;
+        }
+        
+        .hidden {
+            display: none !important;
+        }
 
-            /* Hero Buttons */
-            header .space-x-4 {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            header .space-x-4 a {
-                width: 100%;
-                text-align: center;
-            }
-
-            /* Features Grid */
-            .grid.md\:grid-cols-4 {
-                grid-template-columns: 1fr;
-            }
-
-            /* Projects Grid */
-            .grid.md\:grid-cols-3 {
-                grid-template-columns: 1fr;
-            }
-
-            /* Footer */
-            .grid.grid-cols-1.md\:grid-cols-4 {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .social-links {
-                justify-content: center;
+        /* Force display for desktop menu */
+        @media (min-width: 768px) {
+            .md\:flex {
+                display: flex !important;
             }
         }
 
-        /* Tablet (481px - 768px) */
-        @media screen and (min-width: 481px) and (max-width: 768px) {
-            /* Hero Section */
-            header h1 {
-                font-size: 2.5rem !important;
-            }
-
-            /* Features & Projects Grid */
-            .grid.md\:grid-cols-4 {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .grid.md\:grid-cols-3 {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            /* Footer */
-            .grid.grid-cols-1.md\:grid-cols-4 {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        /* Large Tablet & Small Laptop (769px - 1024px) */
-        @media screen and (min-width: 769px) and (max-width: 1024px) {
-            .container {
-                padding: 0 2rem;
-            }
-
-            /* Features Grid */
-            .grid.md\:grid-cols-4 {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 2rem;
-            }
-        }
-
-        /* Additional Responsive Utilities */
-        .responsive-padding {
-            padding-left: max(1rem, env(safe-area-inset-left));
-            padding-right: max(1rem, env(safe-area-inset-right));
-        }
-
-        .responsive-text {
-            font-size: clamp(1rem, 2.5vw, 1.25rem);
-        }
-
-        .responsive-heading {
-            font-size: clamp(1.5rem, 5vw, 3rem);
-        }
-
-        /* Fix for iOS Safari notch */
-        @supports (padding-top: env(safe-area-inset-top)) {
-            .nav-fixed {
-                padding-top: env(safe-area-inset-top);
-            }
-        }
-
-        /* Fix for mobile navigation height */
-        @media screen and (max-width: 768px) {
-            #mobile-menu {
-                height: 100vh;
-                height: -webkit-fill-available;
-            }
-        }
-
-        /* Improved touch targets for mobile */
-        @media (hover: none) and (pointer: coarse) {
-            button, 
-            a {
-                min-height: 44px;
-                min-width: 44px;
-            }
-
-            .nav-link {
-                padding: 0.75rem 1rem;
-            }
-        }
-
-        /* Responsive Images */
-        .responsive-image {
-            width: 100%;
-            height: auto;
-            aspect-ratio: 16/9;
-            object-fit: cover;
-        }
-
-        /* Responsive Tables */
-        @media screen and (max-width: 768px) {
-            .responsive-table {
-                display: block;
-                overflow-x: auto;
-                -webkit-overflow-scrolling: touch;
+        /* Hide mobile menu on desktop */
+        @media (min-width: 768px) {
+            .md\:hidden {
+                display: none !important;
             }
         }
     </style>
@@ -364,34 +248,20 @@
                 </div>
 
                 <!-- Desktop Menu -->
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#home" class="nav-link group" data-translate="home">
-                        <span class="bg-left-bottom bg-gradient-to-r from-pink-500 to-purple-500 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out">
-                            Trang Chủ
-                        </span>
-                    </a>
-                    <a href="#courses" class="nav-link group" data-translate="courses">
-                        <span class="bg-left-bottom bg-gradient-to-r from-pink-500 to-purple-500 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out">
-                            Khóa Học
-                        </span>
-                    </a>
-                    <a href="#about" class="nav-link group" data-translate="about">
-                        <span class="bg-left-bottom bg-gradient-to-r from-pink-500 to-purple-500 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out">
-                            Về Chúng Tôi
-                        </span>
-                    </a>
-                    <a href="#blog" class="nav-link group" data-translate="blog">
-                        <span class="bg-left-bottom bg-gradient-to-r from-pink-500 to-purple-500 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out">
-                            Blog
-                        </span>
-                    </a>
+                <div class="hidden lg:flex md:flex items-center space-x-8 !important">
+                    <div class="flex items-center space-x-8">
+                        <a href="#home" class="nav-link group text-white hover:text-pink-200 transition-colors" data-translate="home">Trang Chủ</a>
+                        <a href="#courses" class="nav-link group text-white hover:text-pink-200 transition-colors" data-translate="courses">Khóa Học</a>
+                        <a href="#about" class="nav-link group text-white hover:text-pink-200 transition-colors" data-translate="about">Về Chúng Tôi</a>
+                        <a href="#blog" class="nav-link group text-white hover:text-pink-200 transition-colors" data-translate="blog">Blog</a>
+                    </div>
                     
                     <!-- Action Buttons -->
                     <div class="flex items-center space-x-4">
-                        <a href="#login" class="px-4 py-2 rounded-xl text-white hover:text-pink-200 transition-colors duration-300">
+                        <a href="#login" class="px-4 py-2 rounded-xl text-white hover:text-pink-200 transition-colors duration-300" data-translate="login">
                             Đăng Nhập
                         </a>
-                        <a href="#register" class="relative inline-flex items-center justify-center px-6 py-2 overflow-hidden font-medium transition-all bg-white rounded-xl hover:bg-white group">
+                        <a href="#register" class="relative inline-flex items-center justify-center px-6 py-2 overflow-hidden font-medium transition-all bg-white rounded-xl hover:bg-white group" data-translate="register">
                             <span class="w-48 h-48 rounded rotate-[-40deg] bg-purple-600 absolute bottom-0 left-0 -translate-x-full ease-out duration-500 transition-all translate-y-full mb-9 ml-9 group-hover:ml-0 group-hover:mb-32 group-hover:translate-x-0"></span>
                             <span class="relative w-full text-left text-purple-600 transition-colors duration-300 ease-in-out group-hover:text-white">
                                 Đăng Ký Ngay
@@ -399,10 +269,25 @@
                         </a>
                     </div>
 
-                    <!-- Language Toggle Button -->
-                    <button id="language-toggle" class="px-4 py-2 rounded-xl text-white hover:text-pink-200 transition-colors duration-300">
-                        EN
-                    </button>
+                    <!-- Language Switcher -->
+                    <div class="relative">
+                        <button id="lang-toggle" class="flex items-center space-x-2 text-white hover:text-pink-200 transition-colors">
+                            <span id="current-lang">VI</span>
+                            <i class="fas fa-chevron-down text-xs"></i>
+                        </button>
+                        <div id="lang-dropdown" class="absolute right-0 mt-2 w-40 bg-white rounded-xl shadow-lg hidden">
+                            <div class="py-2">
+                                <button class="lang-btn w-full px-4 py-2 text-left hover:bg-gray-100 flex items-center space-x-2" data-lang="vi">
+                                    <span>VN</span>
+                                    <span>VI</span>
+                                </button>
+                                <button class="lang-btn w-full px-4 py-2 text-left hover:bg-gray-100 flex items-center space-x-2" data-lang="en">
+                                    <span>GB</span>
+                                    <span>EN</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Mobile Menu Button -->
@@ -420,23 +305,46 @@
             <!-- Mobile Menu -->
             <div id="mobile-menu" class="absolute top-full left-0 w-full md:hidden hidden">
                 <div class="px-2 pt-2 pb-3 space-y-1 bg-gradient-to-r from-gray-900 via-purple-900 to-violet-900 backdrop-blur-lg rounded-b-2xl border border-white/10">
-                    <a href="#home" class="block px-3 py-2 text-white rounded-lg hover:bg-white/10 transition-all duration-300">
+                    <!-- Navigation Links -->
+                    <a href="#home" class="block px-3 py-2 text-white rounded-lg hover:bg-white/10 transition-all duration-300" data-translate="home">
                         Trang Chủ
                     </a>
-                    <a href="#courses" class="block px-3 py-2 text-white rounded-lg hover:bg-white/10 transition-all duration-300">
+                    <a href="#courses" class="block px-3 py-2 text-white rounded-lg hover:bg-white/10 transition-all duration-300" data-translate="courses">
                         Khóa Học
                     </a>
-                    <a href="#about" class="block px-3 py-2 text-white rounded-lg hover:bg-white/10 transition-all duration-300">
+                    <a href="#about" class="block px-3 py-2 text-white rounded-lg hover:bg-white/10 transition-all duration-300" data-translate="about">
                         Về Chúng Tôi
                     </a>
-                    <a href="#blog" class="block px-3 py-2 text-white rounded-lg hover:bg-white/10 transition-all duration-300">
+                    <a href="#blog" class="block px-3 py-2 text-white rounded-lg hover:bg-white/10 transition-all duration-300" data-translate="blog">
                         Blog
                     </a>
+                    
+                    <!-- Mobile Language Switcher -->
+                    <div class="relative px-3 py-2">
+                        <button id="mobile-lang-toggle" class="flex items-center space-x-2 text-white">
+                            <span id="mobile-current-lang">VI</span>
+                            <i class="fas fa-chevron-down text-xs"></i>
+                        </button>
+                        <div id="mobile-lang-dropdown" class="absolute left-0 mt-2 w-40 bg-white rounded-xl shadow-lg hidden">
+                            <div class="py-2">
+                                <button class="lang-btn w-full px-4 py-2 text-left hover:bg-gray-100 flex items-center space-x-2" data-lang="vi">
+                                    <span>VN</span>
+                                    <span>VI</span>
+                                </button>
+                                <button class="lang-btn w-full px-4 py-2 text-left hover:bg-gray-100 flex items-center space-x-2" data-lang="en">
+                                    <span>GB</span>
+                                    <span>EN</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Mobile Action Buttons -->
                     <div class="pt-4 space-y-2">
-                        <a href="#login" class="block w-full px-3 py-2 text-center text-white rounded-lg hover:bg-white/10 transition-all duration-300">
+                        <a href="#login" class="block w-full px-3 py-2 text-center text-white rounded-lg hover:bg-white/10 transition-all duration-300" data-translate="login">
                             Đăng Nhập
                         </a>
-                        <a href="#register" class="block w-full px-3 py-2 text-center text-white bg-gradient-to-r from-pink-500 to-purple-500 rounded-lg hover:opacity-90 transition-all duration-300">
+                        <a href="#register" class="block w-full px-3 py-2 text-center text-white bg-gradient-to-r from-pink-500 to-purple-500 rounded-lg hover:opacity-90 transition-all duration-300" data-translate="register">
                             Đăng Ký Ngay
                         </a>
                     </div>
@@ -451,17 +359,17 @@
         <header id="home" class="dynamic-bg text-white min-h-screen flex items-center justify-center relative overflow-hidden">
             <div class="absolute inset-0 bg-gradient-to-b from-black/50 to-black/20"></div>
             <div class="container mx-auto px-4 text-center relative z-10">
-                <h1 class="text-6xl font-bold mb-8 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600 typewriter" data-translate="heroTitle">
+                <h1 class="text-6xl font-bold mb-8 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600 typewriter" data-translate="hero_title">
                     HuuLongAcademy
                 </h1>
-                <p class="text-2xl mb-12 max-w-3xl mx-auto text-gray-200" data-translate="heroSubtitle">
+                <p class="text-2xl mb-12 max-w-3xl mx-auto text-gray-200" data-translate="hero_subtitle">
                     Kiến Tạo Tương Lai Số - Định Hình Thế Hệ GenZ
                 </p>
                 <div class="space-x-4">
-                    <a href="#projects" class="bg-gradient-to-r from-yellow-400 to-red-500 text-white px-6 py-3 rounded-full hover:from-yellow-500 hover:to-red-600 transition inline-block neon-hover" data-translate="exploreProjects">
+                    <a href="#projects" class="bg-gradient-to-r from-yellow-400 to-red-500 text-white px-6 py-3 rounded-full hover:from-yellow-500 hover:to-red-600 transition inline-block neon-hover" data-translate="explore_projects">
                         <i class="fas fa-rocket mr-2" aria-hidden="true"></i>Khám Phá Dự Án
                     </a>
-                    <a href="https://github.com/huulong" target="_blank" rel="noopener noreferrer" class="border-2 border-white text-white px-6 py-3 rounded-full hover:bg-white hover:text-blue-600 transition inline-block neon-hover" data-translate="githubProfile">
+                    <a href="https://github.com/huulong" target="_blank" rel="noopener noreferrer" class="border-2 border-white text-white px-6 py-3 rounded-full hover:bg-white hover:text-blue-600 transition inline-block neon-hover" data-translate="github_profile">
                         <i class="fab fa-github mr-2" aria-hidden="true"></i>GitHub Profile
                     </a>
                 </div>
@@ -473,20 +381,20 @@
             <div class="container mx-auto px-4">
                 <div class="flex flex-wrap items-center">
                     <div class="w-full md:w-1/2 mb-12 md:mb-0">
-                        <h2 class="text-4xl font-bold mb-8 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600" data-translate="aboutTitle">
+                        <h2 class="text-4xl font-bold mb-8 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600" data-translate="about_title">
                             Về Chúng Tôi
                         </h2>
-                        <p class="text-gray-600 mb-6 text-lg" data-translate="aboutDescription">
+                        <p class="text-gray-600 mb-6 text-lg" data-translate="about_description">
                             HuuLong Academy là nền tảng giáo dục công nghệ hàng đầu, tập trung vào việc đào tạo và phát triển kỹ năng cho thế hệ GenZ.
                         </p>
                         <div class="grid grid-cols-2 gap-6">
                             <div class="p-6 bg-gray-50 rounded-xl">
-                                <h3 class="text-3xl font-bold text-blue-600 mb-2" data-translate="studentsCount">5000+</h3>
+                                <h3 class="text-3xl font-bold text-blue-600 mb-2 counter" data-target="5000">0</h3>
                                 <p class="text-gray-600" data-translate="students">Học viên</p>
                             </div>
                             <div class="p-6 bg-gray-50 rounded-xl">
-                                <h3 class="text-3xl font-bold text-purple-600 mb-2" data-translate="coursesCount">50+</h3>
-                                <p class="text-gray-600" data-translate="courses">Khóa học</p>
+                                <h3 class="text-3xl font-bold text-purple-600 mb-2 counter" data-target="50">0</h3>
+                                <p class="text-gray-600" data-translate="courses_count">Khóa học</p>
                             </div>
                         </div>
                     </div>
@@ -503,7 +411,7 @@
         <!-- Thêm section Features trước Projects -->
         <section class="py-20 bg-gray-50">
             <div class="container mx-auto px-4">
-                <h2 class="text-4xl font-bold text-center mb-16 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600" data-translate="whyChooseUs">
+                <h2 class="text-4xl font-bold text-center mb-16 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600" data-translate="why_choose_us">
                     Tại Sao Chọn Chúng Tôi?
                 </h2>
                 <div class="grid md:grid-cols-4 gap-8">
@@ -511,29 +419,29 @@
                         <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6">
                             <i class="fas fa-laptop-code text-2xl text-blue-600"></i>
                         </div>
-                        <h3 class="text-xl font-semibold mb-4" data-translate="practicalLearning">Học Thực Tế</h3>
-                        <p class="text-gray-600" data-translate="practicalDesc">Trải nghiệm học tập thực tế với các dự án từ doanh nghiệp</p>
+                        <h3 class="text-xl font-semibold mb-4" data-translate="practical_learning">Học Thực Tế</h3>
+                        <p class="text-gray-600" data-translate="practical_description">Trải nghiệm học tập thực tế với các dự án từ doanh nghiệp</p>
                     </div>
                     <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300">
                         <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mb-6">
                             <i class="fas fa-users text-2xl text-purple-600"></i>
                         </div>
                         <h3 class="text-xl font-semibold mb-4" data-translate="mentoring">Mentor 1-1</h3>
-                        <p class="text-gray-600" data-translate="mentoringDesc">Được hướng dẫn trực tiếp bởi các chuyên gia trong ngành</p>
+                        <p class="text-gray-600" data-translate="mentoring_description">Được hướng dẫn trực tiếp bởi các chuyên gia trong ngành</p>
                     </div>
                     <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300">
                         <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-6">
                             <i class="fas fa-certificate text-2xl text-green-600"></i>
                         </div>
-                        <h3 class="text-xl font-semibold mb-4" data-translate="certificate">Chứng Chỉ</h3>
-                        <p class="text-gray-600" data-translate="certificateDesc">Nhận chứng chỉ có giá trị từ các đối tác doanh nghiệp</p>
+                        <h3 class="text-xl font-semibold mb-4" data-translate="certification">Chứng Chỉ</h3>
+                        <p class="text-gray-600" data-translate="certification_description">Nhận chứng chỉ có giá trị từ các đối tác doanh nghiệp</p>
                     </div>
                     <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300">
                         <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mb-6">
                             <i class="fas fa-rocket text-2xl text-red-600"></i>
                         </div>
-                        <h3 class="text-xl font-semibold mb-4" data-translate="opportunity">Cơ Hội</h3>
-                        <p class="text-gray-600" data-translate="opportunityDesc">Kết nối trực tiếp với cơ hội việc làm từ đối tác</p>
+                        <h3 class="text-xl font-semibold mb-4" data-translate="opportunities">Cơ Hội</h3>
+                        <p class="text-gray-600" data-translate="opportunities_description">Kết nối trực tiếp với cơ hội việc làm từ đối tác</p>
                     </div>
                 </div>
             </div>
@@ -542,7 +450,7 @@
         <!-- Projects Section with Enhanced Cards -->
         <section id="projects" class="py-20 bg-gray-100">
             <div class="container mx-auto px-4">
-                <h2 class="text-4xl font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600" data-translate="featuredProjects">
+                <h2 class="text-4xl font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600" data-translate="featured_projects">
                     Dự Án Tiêu Biểu
                 </h2>
                 <div class="grid md:grid-cols-3 gap-8">
@@ -551,8 +459,8 @@
                             <div class="absolute inset-0 bg-gradient-to-r from-blue-500/50 to-purple-600/50 group-hover:opacity-75 transition-opacity"></div>
                             <img src="https://hocban.vn/wp-content/uploads/2016/09/Vi-du-ve-web-app.png" alt="Ứng Dụng Web" class="w-full h-56 object-cover transform group-hover:scale-110 transition-transform duration-700">
                         </div>
-                        <h3 class="text-xl font-semibold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600" data-translate="webApp">Ứng Dụng Web</h3>
-                        <p class="text-gray-600 mb-4" data-translate="webAppDesc">Các dự án web đa nền tảng, áp dụng công nghệ tiên tiến như React, Vue và Node.js.</p>
+                        <h3 class="text-xl font-semibold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600" data-translate="web_apps">Ứng Dụng Web</h3>
+                        <p class="text-gray-600 mb-4" data-translate="web_description">Các dự án web đa nền tảng, áp dụng công nghệ tiên tiến như React, Vue và Node.js.</p>
                         <a href="https://github.com/huulong/web-projects" target="_blank" class="text-blue-600 hover:text-purple-700 transition flex items-center justify-center">
                             <i class="fab fa-github mr-2"></i>Xem Trên GitHub
                         </a>
@@ -562,8 +470,8 @@
                             <div class="absolute inset-0 bg-gradient-to-r from-green-400/50 to-blue-500/50 group-hover:opacity-75 transition-opacity"></div>
                             <img src="https://cdn.sgtiepthi.vn/wp-content/uploads/2019/10/TMDT_2071256.jpg" alt="Ứng Dụng Di Động" class="w-full h-56 object-cover transform group-hover:scale-110 transition-transform duration-700">
                         </div>
-                        <h3 class="text-xl font-semibold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-blue-600" data-translate="mobileApp">Ứng Dụng Di Động</h3>
-                        <p class="text-gray-600 mb-4" data-translate="mobileAppDesc">Giải pháp ứng dụng di động sáng tạo sử dụng Flutter và React Native.</p>
+                        <h3 class="text-xl font-semibold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-blue-600" data-translate="mobile_apps">Ứng Dụng Di Động</h3>
+                        <p class="text-gray-600 mb-4" data-translate="mobile_description">Giải pháp ứng dụng di động sáng tạo sử dụng Flutter và React Native.</p>
                         <a href="https://github.com/huulong/mobile-apps" target="_blank" class="text-green-600 hover:text-blue-700 transition flex items-center justify-center">
                             <i class="fab fa-github mr-2"></i>Xem Trên GitHub
                         </a>
@@ -573,9 +481,9 @@
                             <div class="absolute inset-0 bg-gradient-to-r from-red-500/50 to-yellow-500/50 group-hover:opacity-75 transition-opacity"></div>
                             <img src="https://vti-solutions-assets.s3.ap-southeast-1.amazonaws.com/wp-content/uploads/2021/10/14141049/shutterstock_725383498-1.png" alt="Dự Án AI" class="w-full h-56 object-cover transform group-hover:scale-110 transition-transform duration-700">
                         </div>
-                        <h3 class="text-xl font-semibold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-yellow-600" data-translate="aiProject">Dự Án AI</h3>
-                        <p class="text-gray-600 mb-4" data-translate="aiProjectDesc">Các giải pháp trí tuệ nhân tạo tiên tiến sử dụng Machine Learning và Deep Learning.</p>
-                        <a href="https://github.com/huulong/ai-projects" target="_blank" class="text-red-600 hover:text-yellow-700 transition flex items-center justify-center">
+                        <h3 class="text-xl font-semibold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-yellow-600" data-translate="ai_projects">Dự Án AI</h3>
+                        <p class="text-gray-600 mb-4" data-translate="ai_description">Các giải pháp trí tuệ nhân tạo tiên tiến sử dụng Machine Learning và Deep Learning.</p>
+                        <a href="https://github.com/huulong/ai-projects" target="_blank" class="text-red-600 hover:text-yellow-700 transition flex items-center justify-center" data-translate="view_on_github">
                             <i class="fab fa-github mr-2"></i>Xem Trên GitHub
                         </a>
                     </div>
@@ -586,13 +494,13 @@
         <!-- Skills Section with Enhanced Animations -->
         <section class="py-20 bg-white">
             <div class="container mx-auto px-4">
-                <h2 class="text-4xl font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600">
+                <h2 class="text-4xl font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600" data-translate="professional_skills">
                     Kỹ Năng Chuyên Môn
                 </h2>
                 <div class="max-w-2xl mx-auto">
                     <div class="mb-6">
                         <div class="flex justify-between mb-2">
-                            <span class="text-blue-600">Web Development</span>
+                            <span class="text-blue-600" data-translate="web_development">Web Development</span>
                             <span>90%</span>
                         </div>
                         <div class="bg-gray-200 rounded-full h-2.5">
@@ -601,7 +509,7 @@
                     </div>
                     <div class="mb-6">
                         <div class="flex justify-between mb-2">
-                            <span class="text-green-600">Mobile Development</span>
+                            <span class="text-green-600" data-translate="mobile_development">Mobile Development</span>
                             <span>85%</span>
                         </div>
                         <div class="bg-gray-200 rounded-full h-2.5">
@@ -610,7 +518,7 @@
                     </div>
                     <div class="mb-6">
                         <div class="flex justify-between mb-2">
-                            <span class="text-red-600">AI & Machine Learning</span>
+                            <span class="text-red-600" data-translate="ai_ml">AI & Machine Learning</span>
                             <span>75%</span>
                         </div>
                         <div class="bg-gray-200 rounded-full h-2.5">
@@ -624,404 +532,153 @@
         <!-- Services Section with Interactive Hover Effects -->
         <section id="services" class="py-20 bg-gray-100">
             <div class="container mx-auto px-4">
-                <h2 class="text-4xl font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600">
+                <h2 class="text-4xl font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600" data-translate="our_services">
                     Dịch Vụ Của Chúng Tôi
                 </h2>
                 <div class="grid md:grid-cols-3 gap-8">
                     <div class="service-card bg-white p-6 rounded-lg shadow-lg text-center neon-hover transform transition-all">
                         <i class="fas fa-code text-4xl text-blue-500 mb-4"></i>
-                        <h3 class="text-xl font-semibold mb-4">Phát Triển Web</h3>
-                        <p class="text-gray-600">Chúng tôi cung cấp dịch vụ phát triển web tùy chỉnh với công nghệ mới nhất.</p>
+                        <h3 class="text-xl font-semibold mb-4" data-translate="web_dev_service">Phát Triển Web</h3>
+                        <p class="text-gray-600" data-translate="web_dev_description">Chúng tôi cung cấp dịch vụ phát triển web tùy chỉnh với công nghệ mới nhất.</p>
                     </div>
                     <div class="service-card bg-white p-6 rounded-lg shadow-lg text-center neon-hover transform transition-all">
                         <i class="fas fa-mobile-alt text-4xl text-green-500 mb-4"></i>
-                        <h3 class="text-xl font-semibold mb-4">Phát Triển Ứng Dụng Di Động</h3>
-                        <p class="text-gray-600">Giải pháp ứng dụng di động sáng tạo cho cả iOS và Android.</p>
+                        <h3 class="text-xl font-semibold mb-4" data-translate="mobile_dev_service">Phát Triển Ứng Dụng Di Động</h3>
+                        <p class="text-gray-600" data-translate="mobile_dev_description">Giải pháp ứng dụng di động sáng tạo cho cả iOS và Android.</p>
                     </div>
                     <div class="service-card bg-white p-6 rounded-lg shadow-lg text-center neon-hover transform transition-all">
                         <i class="fas fa-brain text-4xl text-red-500 mb-4"></i>
-                        <h3 class="text-xl font-semibold mb-4">AI & Machine Learning</h3>
-                        <p class="text-gray-600">Chúng tôi cung cấp các giải pháp AI tiên tiến để tối ưu hóa quy trình kinh doanh.</p>
+                        <h3 class="text-xl font-semibold mb-4" data-translate="ai_service">AI & Machine Learning</h3>
+                        <p class="text-gray-600" data-translate="ai_service_description">Chúng tôi cung cấp các giải pháp AI tiên tiến để tối ưu hóa quy trình kinh doanh.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Thêm section Testimonials sau Services -->
-        <section class="py-20 bg-white">
-            <div class="container mx-auto px-4">
-                <h2 class="text-4xl font-bold text-center mb-16 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600">
-                    Học Viên Nói Gì?
-                </h2>
-                <div class="grid md:grid-cols-3 gap-8">
-                    <div class="bg-gray-50 p-8 rounded-xl">
-                        <div class="flex items-center mb-6">
-                            <img src="https://i.pravatar.cc/100?img=1" alt="Student" class="w-16 h-16 rounded-full mr-4">
-                            <div>
-                                <h4 class="font-semibold">Nguyễn Văn A</h4>
-                                <p class="text-gray-600">Web Developer</p>
-                            </div>
-                        </div>
-                        <p class="text-gray-600">"Khóa học rất thực tế và hữu ích. Mentor nhiệt tình và kiến thức chuyên sâu."</p>
-                    </div>
-                    <!-- Thêm 2 testimonial tương tự -->
-                </div>
-            </div>
-        </section>
-
-        <!-- Thêm section Partners trước Footer -->
-        <section class="py-20 bg-gray-50">
-            <div class="container mx-auto px-4">
-                <h2 class="text-4xl font-bold text-center mb-16 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600">
-                    Đối Tác Của Chúng Tôi
-                </h2>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-                    <div class="flex items-center justify-center">
-                        <img src="path-to-partner-logo-1.png" alt="Partner 1" class="h-16 grayscale hover:grayscale-0 transition-all">
-                    </div>
-                    <!-- Thêm 3 partner logo tương tự -->
-                </div>
-            </div>
-        </section>
-
-        <!-- Thêm section Blog trước Contact -->
-        <section class="py-20 bg-white">
-            <div class="container mx-auto px-4">
-                <h2 class="text-4xl font-bold text-center mb-16 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600">
-                    Tin Tức & Blog
-                </h2>
-                <div class="grid md:grid-cols-3 gap-8">
-                    <div class="bg-white rounded-xl shadow-lg overflow-hidden">
-                        <img src="path-to-blog-image-1.jpg" alt="Blog 1" class="w-full h-48 object-cover">
-                        <div class="p-6">
-                            <h3 class="text-xl font-semibold mb-4">10 Xu Hướng Công Nghệ 2024</h3>
-                            <p class="text-gray-600 mb-4">Khám phá những xu hướng công nghệ mới nhất định hình tương lai...</p>
-                            <a href="#" class="text-blue-600 hover:text-blue-800">Đọc thêm →</a>
-                        </div>
-                    </div>
-                    <!-- Thêm 2 blog card tương tự -->
-                </div>
-            </div>
-        </section>
-
-        <!-- Cập nhật Contact Form với thêm thông tin -->
+        <!-- Contact Section -->
         <section id="contact" class="py-20 bg-gray-100">
             <div class="container mx-auto px-4">
                 <div class="grid md:grid-cols-2 gap-12">
                     <div>
-                        <h2 class="text-4xl font-bold mb-8 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600">
+                        <h2 class="text-4xl font-bold mb-8 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600" data-translate="contact_us">
                             Liên Hệ Với Chúng Tôi
                         </h2>
-                        <p class="text-gray-600 mb-8">
+                        <p class="text-gray-600 mb-8" data-translate="contact_description">
                             Hãy để lại thông tin, chúng tôi sẽ liên hệ với bạn sớm nhất có thể.
                         </p>
                         <div class="space-y-4">
                             <div class="flex items-center">
                                 <i class="fas fa-map-marker-alt text-blue-600 w-8"></i>
-                                <span>123 Đường ABC, Quận XYZ, TP.HCM</span>
-                            </div>
-                            <div class="flex items-center">
-                                <i class="fas fa-phone text-blue-600 w-8"></i>
-                                <span>+84 123 456 789</span>
+                                <span data-translate="address">123 Đường ABC, Quận XYZ, TP.HCM</span>
                             </div>
                             <div class="flex items-center">
                                 <i class="fas fa-envelope text-blue-600 w-8"></i>
-                                <span>info@huulongacademy.com</span>
+                                <span data-translate="email">info@huulongacademy.com</span>
                             </div>
                         </div>
                     </div>
-                    <!-- Form giữ nguyên như cũ -->
                 </div>
             </div>
         </section>
+    </main>
 
-       <!-- Footer với thiết kế hiện đại cho GenZ -->
-       <footer class="bg-gradient-to-r from-gray-900 via-blue-900 to-purple-900 text-white py-20 relative overflow-hidden">
-           <!-- Animated Background Elements -->
-           <div class="absolute inset-0 overflow-hidden">
-               <div class="absolute w-96 h-96 bg-blue-500/10 rounded-full blur-3xl -top-10 -left-10 animate-pulse"></div>
-               <div class="absolute w-96 h-96 bg-purple-500/10 rounded-full blur-3xl -bottom-10 -right-10 animate-pulse delay-700"></div>
-           </div>
+    <!-- Footer -->
+    <footer class="bg-gradient-to-r from-gray-900 via-blue-900 to-purple-900 text-white py-20 relative overflow-hidden">
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="grid md:grid-cols-4 gap-12 mb-16">
+                <!-- Company Info -->
+                <div class="space-y-4">
+                    <h4 class="text-xl font-bold mb-6" data-translate="about_footer">Về Chúng Tôi</h4>
+                    <p class="text-gray-300">
+                        HuuLong Academy - Nền tảng giáo dục công nghệ hàng đầu cho thế hệ GenZ
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
 
-           <div class="container mx-auto px-4 relative z-10">
-               <!-- Logo và Slogan -->
-               <div class="text-center mb-16">
-                   <div class="inline-block p-4 rounded-2xl bg-white/5 backdrop-blur-lg mb-4">
-                       <h3 class="text-3xl font-bold bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent">
-                           Huu Long Academy
-                       </h3>
-                   </div>
-                   <p class="text-xl text-gray-300">Kiến Tạo Tương Lai Số 🚀</p>
-               </div>
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-xl font-bold mb-6" data-translate="quick_links">Liên Kết Nhanh</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#home" class="text-gray-300 hover:text-white transition-colors">Trang Chủ</a></li>
+                        <li><a href="#courses" class="text-gray-300 hover:text-white transition-colors">Khóa Học</a></li>
+                        <li><a href="#about" class="text-gray-300 hover:text-white transition-colors">Về Chúng Tôi</a></li>
+                        <li><a href="#blog" class="text-gray-300 hover:text-white transition-colors">Blog</a></li>
+                        <li><a href="#contact" class="text-gray-300 hover:text-white transition-colors">Liên Hệ</a></li>
+                    </ul>
+                </div>
 
-               <!-- Grid Content -->
-               <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
-                   <!-- Quick Links -->
-                   <div class="space-y-4">
-                       <h4 class="text-xl font-semibold mb-6 flex items-center">
-                           <span class="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
-                           Khám Phá
-                       </h4>
-                       <ul class="space-y-3">
-                           <li><a href="#home" class="text-gray-300 hover:text-white hover:translate-x-2 transition-all flex items-center">
-                               <i class="fas fa-chevron-right mr-2 text-xs"></i>Trang Chủ
-                           </a></li>
-                           <li><a href="#about" class="text-gray-300 hover:text-white hover:translate-x-2 transition-all flex items-center">
-                               <i class="fas fa-chevron-right mr-2 text-xs"></i>Về Chúng Tôi
-                           </a></li>
-                           <li><a href="#services" class="text-gray-300 hover:text-white hover:translate-x-2 transition-all flex items-center">
-                               <i class="fas fa-chevron-right mr-2 text-xs"></i>Dịch Vụ
-                           </a></li>
-                       </ul>
-                   </div>
+                <!-- Contact Info -->
+                <div>
+                    <h4 class="text-xl font-bold mb-6" data-translate="contact_info">Thông Tin Liên Hệ</h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-center">
+                            <i class="fas fa-map-marker-alt w-5 text-gray-300"></i>
+                            <span class="text-gray-300 ml-2">Hà Thọ Lộc, Hương Thuỷ, TP.Huế</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone w-5 text-gray-300"></i>
+                            <span class="text-gray-300 ml-2">+84 382 333 246</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope w-5 text-gray-300"></i>
+                            <span class="text-gray-300 ml-2">info@huulongacademy.com</span>
+                        </li>
+                    </ul>
+                </div>
 
-                   <!-- Resources -->
-                   <div class="space-y-4">
-                       <h4 class="text-xl font-semibold mb-6 flex items-center">
-                           <span class="w-2 h-2 bg-purple-500 rounded-full mr-2"></span>
-                           Tài Nguyên
-                       </h4>
-                       <ul class="space-y-3">
-                           <li><a href="#" class="text-gray-300 hover:text-white hover:translate-x-2 transition-all flex items-center">
-                               <i class="fas fa-book-open mr-2"></i>Blog
-                           </a></li>
-                           <li><a href="#" class="text-gray-300 hover:text-white hover:translate-x-2 transition-all flex items-center">
-                               <i class="fas fa-graduation-cap mr-2"></i>Khóa Học
-                           </a></li>
-                           <li><a href="#" class="text-gray-300 hover:text-white hover:translate-x-2 transition-all flex items-center">
-                               <i class="fas fa-code mr-2"></i>Workshop
-                           </a></li>
-                       </ul>
-                   </div>
+                <!-- Newsletter -->
+                <div>
+                    <h4 class="text-xl font-bold mb-6" data-translate="newsletter">Đăng Ký Nhận Tin</h4>
+                    <p class="text-gray-300 mb-4" data-translate="newsletter_description">Nhận thông tin mới nhất về khóa học và công nghệ</p>
+                    <form class="space-y-3">
+                        <input type="email" placeholder="Email của bạn" class="w-full px-4 py-2 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:border-white/40">
+                        <button type="submit" class="w-full px-4 py-2 bg-gradient-to-r from-pink-500 to-purple-500 text-white rounded-lg hover:opacity-90 transition-opacity" data-translate="subscribe">
+                            Đăng Ký
+                        </button>
+                    </form>
+                </div>
+            </div>
 
-                   <!-- Community -->
-                   <div class="space-y-4">
-                       <h4 class="text-xl font-semibold mb-6 flex items-center">
-                           <span class="w-2 h-2 bg-pink-500 rounded-full mr-2"></span>
-                           Cộng Đồng
-                       </h4>
-                       <ul class="space-y-3">
-                           <li><a href="#" class="text-gray-300 hover:text-white hover:translate-x-2 transition-all flex items-center">
-                               <i class="fas fa-users mr-2"></i>Discord
-                           </a></li>
-                           <li><a href="#" class="text-gray-300 hover:text-white hover:translate-x-2 transition-all flex items-center">
-                               <i class="fab fa-github mr-2"></i>GitHub
-                           </a></li>
-                           <li><a href="#" class="text-gray-300 hover:text-white hover:translate-x-2 transition-all flex items-center">
-                               <i class="fab fa-youtube mr-2"></i>YouTube
-                           </a></li>
-                       </ul>
-                   </div>
+            <!-- Copyright -->
+            <div class="text-center pt-8 border-t border-white/10">
+                <p class="text-gray-400" data-translate="copyright">© 2024 HuuLong Academy. All rights reserved.</p>
+            </div>
+        </div>
 
-                   <!-- Contact -->
-                   <div class="space-y-4">
-                       <h4 class="text-xl font-semibold mb-6 flex items-center">
-                           <span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
-                           Liên Hệ
-                       </h4>
-                       <div class="space-y-3">
-                           <p class="text-gray-300 flex items-center">
-                               <i class="fas fa-map-marker-alt mr-2"></i>
-                               Hà Thọ Lộc, Hương Thủy, TP.Huế
-                           </p>
-                           <p class="text-gray-300 flex items-center">
-                               <i class="fas fa-phone mr-2"></i>
-                               +84 382 333 246
-                           </p>
-                           <p class="text-gray-300 flex items-center">
-                               <i class="fas fa-envelope mr-2"></i>
-                               info@huulongacademy.com
-                           </p>
-                       </div>
-                   </div>
-               </div>
+        <!-- Decorative Elements -->
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+            <div class="absolute -top-1/2 -left-1/2 w-full h-full bg-gradient-to-r from-blue-500/10 to-purple-500/10 transform rotate-12"></div>
+            <div class="absolute -bottom-1/2 -right-1/2 w-full h-full bg-gradient-to-r from-purple-500/10 to-pink-500/10 transform -rotate-12"></div>
+        </div>
+    </footer>
 
-               <!-- Social Links -->
-               <div class="flex justify-center space-x-6 mb-12">
-                   <a href="#" class="w-12 h-12 bg-white/5 rounded-lg flex items-center justify-center hover:bg-white/10 transition-all hover:scale-110">
-                       <i class="fab fa-facebook-f text-xl"></i>
-                   </a>
-                   <a href="#" class="w-12 h-12 bg-white/5 rounded-lg flex items-center justify-center hover:bg-white/10 transition-all hover:scale-110">
-                       <i class="fab fa-twitter text-xl"></i>
-                   </a>
-                   <a href="#" class="w-12 h-12 bg-white/5 rounded-lg flex items-center justify-center hover:bg-white/10 transition-all hover:scale-110">
-                       <i class="fab fa-instagram text-xl"></i>
-                   </a>
-                   <a href="#" class="w-12 h-12 bg-white/5 rounded-lg flex items-center justify-center hover:bg-white/10 transition-all hover:scale-110">
-                       <i class="fab fa-tiktok text-xl"></i>
-                   </a>
-               </div>
-
-               <!-- Copyright -->
-               <div class="text-center border-t border-white/10 pt-8">
-                   <p class="text-gray-400">&copy; 2024 HuuLong Academy. Made with 💙 for GenZ</p>
-               </div>
-           </div>
-       </footer>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Mobile Menu Functionality
-            const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
-            const nav = document.querySelector('nav .container');
-            
-            // Create mobile menu container
-            const mobileMenu = document.createElement('div');
-            mobileMenu.id = 'mobile-menu';
-            mobileMenu.classList.add('fixed', 'top-0', 'left-0', 'w-full', 'h-full', 'bg-black', 'bg-opacity-90', 'z-50', 'hidden', 'flex', 'flex-col', 'justify-center', 'items-center');
-            
-            // Copy desktop navigation links
-            const desktopLinks = document.querySelector('nav .space-x-6');
-            if (desktopLinks) {
-                const mobileLinks = desktopLinks.cloneNode(true);
-                mobileLinks.classList.remove('space-x-6');
-                mobileLinks.classList.add('flex', 'flex-col', 'space-y-6', 'text-center');
-                
-                // Close button
-                const closeButton = document.createElement('button');
-                closeButton.innerHTML = '<i class="fas fa-times text-3xl text-white"></i>';
-                closeButton.classList.add('absolute', 'top-6', 'right-6', 'text-white');
-                closeButton.setAttribute('aria-label', 'Close mobile menu');
-                
-                mobileMenu.appendChild(closeButton);
-                mobileMenu.appendChild(mobileLinks);
-                document.body.appendChild(mobileMenu);
-
-                // Toggle mobile menu
-                mobileMenuToggle.addEventListener('click', function() {
-                    mobileMenu.classList.remove('hidden');
-                    mobileMenuToggle.setAttribute('aria-expanded', 'true');
-                });
-
-                // Close mobile menu
-                closeButton.addEventListener('click', function() {
-                    mobileMenu.classList.add('hidden');
-                    mobileMenuToggle.setAttribute('aria-expanded', 'false');
-                });
-
-                // Close menu when a link is clicked
-                mobileMenu.querySelectorAll('a').forEach(link => {
-                    link.addEventListener('click', function() {
-                        mobileMenu.classList.add('hidden');
-                        mobileMenuToggle.setAttribute('aria-expanded', 'false');
-                    });
-                });
-            }
-
-            // Language toggle functionality
-            const languageToggle = document.getElementById('language-toggle');
-            const elementsToTranslate = document.querySelectorAll('[data-translate]');
-
-            const translations = {
-                vi: {
-                    home: "Trang Chủ",
-                    courses: "Khóa Học",
-                    about: "Về Chúng Tôi",
-                    blog: "Blog",
-                    login: "Đăng Nhập",
-                    register: "Đăng Ký Ngay",
-                    heroTitle: "Kiến Tạo Tương Lai Số",
-                    heroSubtitle: "Định Hình Thế Hệ GenZ",
-                    exploreProjects: "Khám Phá Dự Án",
-                    aboutTitle: "Về Chúng Tôi",
-                    aboutDescription: "HuuLong Academy là nền tảng giáo dục công nghệ hàng đầu, tập trung vào việc đào tạo và phát triển kỹ năng cho thế hệ GenZ.",
-                    students: "Học viên",
-                    courses: "Khóa học",
-                    whyChooseUs: "Tại Sao Chọn Chúng Tôi?",
-                    practicalLearning: "Học Thực Tế",
-                    practicalDesc: "Trải nghiệm học tập thực tế với các dự án từ doanh nghiệp",
-                    mentoring: "Mentor 1-1",
-                    mentoringDesc: "Được hướng dẫn trực tiếp bởi các chuyên gia trong ngành",
-                    certificate: "Chứng Chỉ",
-                    certificateDesc: "Nhận chứng chỉ có giá trị từ các đối tác doanh nghiệp",
-                    opportunity: "Cơ Hội",
-                    opportunityDesc: "Kết nối trực tiếp với cơ hội việc làm từ đối tác",
-                    featuredProjects: "Dự Án Tiêu Biểu",
-                    webApp: "Ứng Dụng Web",
-                    webAppDesc: "Các dự án web đa nền tảng, áp dụng công nghệ tiên tiến",
-                    mobileApp: "Ứng Dụng Di Động",
-                    mobileAppDesc: "Giải pháp ứng dụng di động sáng tạo",
-                    aiProject: "Dự Án AI",
-                    aiProjectDesc: "Các giải pháp trí tuệ nhân tạo tiên tiến",
-                    explore: "Khám Phá",
-                    resources: "Tài Nguyên",
-                    community: "Cộng Đồng",
-                    contact: "Liên Hệ",
-                    copyright: "© 2024 Huu Long Academy. Made with 💙 for GenZ"
-                },
-                en: {
-                    home: "Home",
-                    courses: "Courses",
-                    about: "About Us",
-                    blog: "Blog",
-                    login: "Login",
-                    register: "Register Now",
-                    heroTitle: "Creating Digital Future",
-                    heroSubtitle: "Shaping GenZ Generation",
-                    exploreProjects: "Explore Projects",
-                    aboutTitle: "About Us",
-                    aboutDescription: "HuuLong Academy is a leading technology education platform, focusing on training and developing skills for GenZ generation.",
-                    students: "Students",
-                    courses: "Courses",
-                    whyChooseUs: "Why Choose Us?",
-                    practicalLearning: "Practical Learning",
-                    practicalDesc: "Real-world learning experience with business projects",
-                    mentoring: "1-1 Mentoring",
-                    mentoringDesc: "Direct guidance from industry experts",
-                    certificate: "Certificate",
-                    certificateDesc: "Receive valuable certificates from business partners",
-                    opportunity: "Opportunity",
-                    opportunityDesc: "Direct connection to job opportunities from partners",
-                    featuredProjects: "Featured Projects",
-                    webApp: "Web Applications",
-                    webAppDesc: "Cross-platform web projects using advanced technologies",
-                    mobileApp: "Mobile Applications",
-                    mobileAppDesc: "Creative mobile application solutions",
-                    aiProject: "AI Projects",
-                    aiProjectDesc: "Advanced artificial intelligence solutions",
-                    explore: "Explore",
-                    resources: "Resources",
-                    community: "Community",
-                    contact: "Contact",
-                    copyright: "© 2024 Huu Long Academy. Made with 💙 for GenZ"
-                }
-            };
-
-            // Get saved language from localStorage or default to 'vi'
-            let currentLanguage = localStorage.getItem('selectedLanguage') || 'vi';
-            
-            // Update button text on page load
-            languageToggle.textContent = currentLanguage.toUpperCase();
-
-            // Function to update content
-            function updateContent(language) {
-                elementsToTranslate.forEach(element => {
-                    const key = element.getAttribute('data-translate');
-                    if (translations[language][key]) {
-                        element.textContent = translations[language][key];
-                    } else {
-                        console.warn(`Missing translation for key: ${key} in language: ${language}`);
-                    }
-                });
-            }
-
-            // Initialize content with saved language
-            updateContent(currentLanguage);
-
-            // Language toggle click handler
-            languageToggle.addEventListener('click', function() {
-                currentLanguage = currentLanguage === 'vi' ? 'en' : 'vi';
-                
-                // Save to localStorage
-                localStorage.setItem('selectedLanguage', currentLanguage);
-                
-                // Update button text
-                languageToggle.textContent = currentLanguage.toUpperCase();
-                
-                // Update content
-                updateContent(currentLanguage);
-            });
-        });
+    <!-- Scripts -->
+    <script src="main.js"></script>
+    <!--Start of Tawk.to Script-->
+<script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/66f62de34cbc4814f7dfa29b/1i8oq6gnt';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
     </script>
+    <!--End of Tawk.to Script-->
 </body>
 </html>
