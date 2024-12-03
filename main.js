@@ -1,3 +1,87 @@
+(function() {
+    // Vô hiệu hóa chuột phải
+    document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+    });
+
+    // Vô hiệu hóa phím tắt phổ biến
+    document.addEventListener('keydown', function(e) {
+        // Chặn F12
+        if (e.keyCode === 123) {
+            e.preventDefault();
+            return false;
+        }
+        
+        // Chặn Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+Shift+C
+        if (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67)) {
+            e.preventDefault();
+            return false;
+        }
+        
+        // Chặn Ctrl+U (View Source)
+        if (e.ctrlKey && e.keyCode === 85) {
+            e.preventDefault();
+            return false;
+        }
+    });
+
+    // Vô hiệu hóa DevTools
+    function detectDevTools() {
+        const widthThreshold = window.outerWidth - window.innerWidth > 160;
+        const heightThreshold = window.outerHeight - window.innerHeight > 160;
+        
+        if(widthThreshold || heightThreshold) {
+            document.body.innerHTML = 'DevTools detected!';
+            window.location.href = 'about:blank';
+        }
+    }
+
+    setInterval(detectDevTools, 1000);
+
+    // Chống copy
+    document.addEventListener('copy', function(e) {
+        e.preventDefault();
+        return false;
+    });
+
+    // Chống select text
+    document.addEventListener('selectstart', function(e) {
+        e.preventDefault();
+        return false;
+    });
+
+    // Mã hóa strings
+    function encode(str) {
+        return btoa(encodeURIComponent(str));
+    }
+
+    // Obfuscate code
+    const _0x1a2b3c = {
+        init: function() {
+            this._0x4d5e6f();
+        },
+        _0x4d5e6f: function() {
+            // Your original code here
+        }
+    };
+
+    // Self-executing function để che giấu scope
+    !function(w,d,t) {
+        _0x1a2b3c.init();
+    }(window, document, setTimeout);
+
+    // Console warning
+    console.log(
+        '%cStop!', 
+        'color: red; font-size: 30px; font-weight: bold;'
+    );
+    console.log(
+        '%cThis is a browser feature intended for developers. If someone told you to copy-paste something here, it is likely a scam.', 
+        'font-size: 16px;'
+    );
+
+})();
+
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize language from localStorage or default to Vietnamese
     const currentLang = localStorage.getItem('preferredLanguage') || 'vi';
@@ -231,7 +315,77 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+
+    // Hiển thị popup khi trang web load
+    // Kiểm tra xem người dùng đã chọn không hiển thị lại chưa
+    const permanentlyHidden = localStorage.getItem('devNoticePermHidden');
+    
+    // Nếu chưa chọn không hiển thị lại, thì hiện popup
+    if (!permanentlyHidden) {
+        showDevNotice();
+    }
+
+    // Navbar Scroll Effect
+    const navbar = document.querySelector('nav');
+    const navLinks = document.querySelectorAll('.nav-link');
+    const logoText = document.querySelector('.logo-text');
+
+    function updateNavbar() {
+        if (window.scrollY > 50) {
+            // Khi scroll xuống
+            navbar.classList.add('scrolled');
+            navbar.classList.remove('glassmorphism');
+            navbar.classList.add('bg-white', 'shadow-md');
+            // Cập nhật màu chữ
+            navLinks.forEach(link => {
+                link.classList.remove('text-white', 'hover:text-pink-200');
+                link.classList.add('text-gray-800', 'hover:text-blue-600');
+            });
+        } else {
+            // Khi ở đầu trang
+            navbar.classList.remove('scrolled');
+            navbar.classList.add('glassmorphism');
+            navbar.classList.remove('bg-white', 'shadow-md');
+            // Khôi phục màu chữ ban đầu
+            navLinks.forEach(link => {
+                link.classList.add('text-white', 'hover:text-pink-200');
+                link.classList.remove('text-gray-800', 'hover:text-blue-600');
+            });
+        }
+    }
+
+    // Gọi function khi scroll
+    window.addEventListener('scroll', updateNavbar);
+    // Gọi function khi load trang
+    updateNavbar();
 });
+
+// Hiển thị popup
+function showDevNotice() {
+    const notice = document.getElementById('dev-notice');
+    notice.classList.remove('hidden');
+    setTimeout(() => {
+        notice.querySelector('.transform').classList.add('scale-100');
+        notice.querySelector('.transform').classList.remove('scale-95', 'opacity-0');
+    }, 10);
+}
+
+// Đóng popup
+function closeDevNotice(type = 'understand') {
+    const notice = document.getElementById('dev-notice');
+    notice.querySelector('.transform').classList.add('scale-95', 'opacity-0');
+    notice.querySelector('.transform').classList.remove('scale-100');
+    
+    setTimeout(() => {
+        notice.classList.add('hidden');
+    }, 300);
+
+    // Nếu người dùng chọn không hiển thị lại
+    if (type === 'never') {
+        localStorage.setItem('devNoticePermHidden', 'true');
+    }
+    // Nếu chọn "Đã hiểu" thì không cần lưu gì cả, popup sẽ hiện lại ở lần tải trang tiếp theo
+}
 
 // Language translations
 const translations = {
@@ -294,8 +448,8 @@ const translations = {
 
         // Contact Section
         contact_us: "Liên Hệ Với Chúng Tôi",
-        contact_description: "Hãy để lại thông tin, chúng tôi sẽ liên hệ với bạn sớm nhất có thể.",
-        address: "123 Đường ABC, Quận XYZ, TP.HCM",
+        contact_description: "Hãy để lại thông tin, chúng tôi sẽ liên hệ với bạn sớm nhất c thể.",
+        address: "Hà Thọ Lộc, Hương Thuỷ, TP.Huế",
         email: "info@huulongacademy.com",
 
         // Footer
@@ -323,7 +477,13 @@ const translations = {
         share: "Chia sẻ",
         load_more: "Xem thêm câu hỏi",
         no_answer_found: "Không tìm thấy câu trả lời bạn cần?",
-        contact_support: "Liên hệ hỗ trợ"
+        contact_support: "Liên hệ hỗ trợ",
+        notice_title: "Thông Báo Phát Triển",
+        notice_subtitle: "Phiên bản Beta 1.0",
+        notice_message: "Chào mừng bạn đến với HuuLong Academy! Chúng tôi đang trong quá trình phát triển để mang đến trải nghiệm học tập tốt nhất cho bạn.",
+        notice_features: "Một số tính năng đang được hoàn thiện và sẽ sớm ra mắt trong thời gian tới. Mọi góp ý xin vui lòng liên hệ với chúng tôi qua chat hoặc email.",
+        notice_remind: "Không hiển thị lại",
+        notice_understand: "Đã hiểu"
     },
     en: {
         // Navigation
@@ -385,7 +545,7 @@ const translations = {
         // Contact Section
         contact_us: "Contact Us",
         contact_description: "Leave your information, we will contact you as soon as possible.",
-        address: "123 ABC Street, XYZ District, HCMC",
+        address: "Ha Tho Loc, Huong Thuy, Hue City",
         email: "info@huulongacademy.com",
 
         // Footer
@@ -413,6 +573,74 @@ const translations = {
         share: "Share",
         load_more: "Load more questions",
         no_answer_found: "Couldn't find the answer you need?",
-        contact_support: "Contact Support"
+        contact_support: "Contact Support",
+        notice_title: "Thông Báo Phát Triển",
+        notice_subtitle: "Phiên bản Beta 1.0",
+        notice_message: "Welcome to HuuLong Academy! We are in the process of developing to bring you the best learning experience.",
+        notice_features: "Some features are still being finalized and will be released soon. Please feel free to contact us through chat or email for any suggestions or feedback.",
+        notice_remind: "Remind me later",
+        notice_understand: "I understand",
+        notice_title: "Development Notice",
+        notice_subtitle: "Beta Version 1.0",
+        notice_message: "Welcome to HuuLong Academy! We are currently in development to bring you the best learning experience.",
+        notice_features: "Some features are being finalized and will be launched soon. Please feel free to contact us via chat or email for any feedback.",
+        notice_remind: "Don't show again",
+        notice_understand: "I Understand"
     }
 };
+
+// Video Background Controls
+document.addEventListener('DOMContentLoaded', function() {
+    const video = document.getElementById('bgVideo');
+    const soundButton = document.getElementById('soundControl');
+    const soundIcon = soundButton.querySelector('i');
+    const volumeSlider = document.getElementById('volumeSlider');
+    const volumeControl = document.getElementById('volumeControl');
+
+    if (video && soundButton && volumeSlider) {
+        // Video starts unmuted with low volume
+        video.muted = false;
+        volumeSlider.value = 0.2;  // Set slider to 20%
+        video.volume = volumeSlider.value;  // Set video volume to 20%
+        
+        // Show volume control by default since audio is playing
+        volumeControl.classList.remove('hidden');
+        volumeControl.classList.add('md:flex');
+
+        // Toggle mute/unmute
+        soundButton.addEventListener('click', () => {
+            video.muted = !video.muted;
+            updateSoundIcon();
+            
+            // Show/hide volume slider when unmuted/muted
+            if (!video.muted) {
+                volumeControl.classList.remove('hidden');
+                volumeControl.classList.add('md:flex');
+            } else {
+                volumeControl.classList.add('hidden');
+                volumeControl.classList.remove('md:flex');
+            }
+        });
+
+        // Volume slider control
+        volumeSlider.addEventListener('input', (e) => {
+            video.volume = e.target.value;
+            video.muted = false; // Unmute when volume is changed
+            updateSoundIcon();
+        });
+
+        // Update sound icon based on volume and mute state
+        function updateSoundIcon() {
+            if (video.muted || video.volume === 0) {
+                soundIcon.className = 'fas fa-volume-mute text-xl';
+            } else if (video.volume < 0.5) {
+                soundIcon.className = 'fas fa-volume-down text-xl';
+            } else {
+                soundIcon.className = 'fas fa-volume-up text-xl';
+            }
+        }
+
+        // Initial icon update
+        updateSoundIcon();
+    }
+});
