@@ -553,12 +553,18 @@
                 id="bgVideo"
                 autoplay 
                 loop 
+                muted
                 playsinline
                 class="absolute w-full h-full object-cover z-0"
             >
-                <source src="https://res.cloudinary.com/dlcuwfndv/video/upload/v1733216267/HueFullHD_h3d7lm.mp4" type="video/mp4">
+                <source src="https://res.cloudinary.com/dlcuwfndv/video/upload/v1710690744/HueFullHD_h3d7lm.mp4" type="video/mp4">
             </video>
             
+            <!-- Thêm loading spinner khi video đang tải -->
+            <div id="videoLoader" class="absolute inset-0 flex items-center justify-center bg-gray-900 z-10">
+                <div class="animate-spin rounded-full h-12 w-12 border-4 border-white border-t-transparent"></div>
+            </div>
+
             <!-- Sound Controls - Điều chỉnh vị trí để không bị đè bởi navbar -->
             <div class="absolute top-32 right-4 z-30 flex items-center space-x-4">
                 <!-- Volume Slider -->
@@ -968,7 +974,7 @@
                 <div class="space-y-4">
                     <h4 class="text-xl font-bold mb-6" data-translate="about_footer">Về Chúng Tôi</h4>
                     <p class="text-gray-300">
-                        HuuLong Academy - Nền tảng giáo dục công nghệ hàng đầu cho thế hệ GenZ
+                        HuuLong Academy - Nn tảng giáo dục công nghệ hàng đầu cho thế hệ GenZ
                     </p>
                     <div class="flex space-x-4">
                         <a href="#" class="text-gray-300 hover:text-white transition-colors">
@@ -1004,7 +1010,7 @@
                     <ul class="space-y-3">
                         <li class="flex items-center">
                             <i class="fas fa-map-marker-alt w-5 text-gray-300"></i>
-                            <span class="text-gray-300 ml-2">Hà Thọ Lộc, Hương Thuỷ, TP.Huế</span>
+                            <span class="text-gray-300 ml-2">Hà Thọ Lộc, Hương Thuỷ, TP.Hu</span>
                         </li>
                         <li class="flex items-center">
                             <i class="fas fa-phone w-5 text-gray-300"></i>
@@ -1109,4 +1115,5 @@
         </div>
     </div>
 </body>
+<script src="js/videoController.js"></script>
 </html>
