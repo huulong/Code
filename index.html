@@ -585,7 +585,7 @@
 <!-- FAQ Section with Enhanced Features -->
 <section class="py-20 bg-white">
     <div class="container mx-auto px-4">
-        <h2 class="text-4xl font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600">
+        <h2 class="text-4xl font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600" data-translate="faq_title">
             Câu Hỏi Thường Gặp
         </h2>
 
@@ -594,16 +594,18 @@
             <div class="relative">
                 <input type="text" 
                     id="faq-search" 
-                    placeholder="Tìm kiếm câu hỏi...">
+                    placeholder="Tìm kiếm câu hỏi..." 
+                    data-translate="search_placeholder"
+                    class="w-full px-12 py-3 rounded-lg border border-gray-200 focus:outline-none focus:border-blue-500">
                 <i class="fas fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
             </div>
             
             <!-- FAQ Categories -->
             <div class="flex flex-wrap gap-3 mt-4">
-                <button class="category-btn active" data-category="all">Tất cả</button>
-                <button class="category-btn" data-category="general">Chung</button>
-                <button class="category-btn" data-category="courses">Khóa học</button>
-                <button class="category-btn" data-category="payment">Thanh toán</button>
+                <button class="category-btn active" data-category="all" data-translate="all">Tất cả</button>
+                <button class="category-btn" data-category="general" data-translate="general">Chung</button>
+                <button class="category-btn" data-category="courses" data-translate="courses">Khóa học</button>
+                <button class="category-btn" data-category="payment" data-translate="payment">Thanh toán</button>
             </div>
         </div>
 
@@ -612,28 +614,32 @@
             <div class="faq-item" data-category="general">
                 <div class="faq-question">
                     <div class="flex items-center gap-3">
-                        <span class="category-tag general">Chung</span>
-                        <span>HuuLong Academy có những khóa học nào?</span>
+                        <span class="category-tag general" data-translate="general">Chung</span>
+                        <span data-translate="faq_question_1">HuuLong Academy có những khóa học nào?</span>
                     </div>
                     <div class="faq-controls">
-                        <span class="helpful-count">14 người thấy hữu ích</span>
+                        <span class="helpful-count">
+                            <span data-translate="helpful_count">14 người thấy hữu ích</span>
+                        </span>
                         <div class="faq-icon"></div>
                     </div>
                 </div>
                 <div class="faq-answer">
                     <div class="faq-answer-content">
-                        <p>Chúng tôi cung cấp các khóa học về:</p>
+                        <p data-translate="faq_answer_1_intro">Chúng tôi cung cấp các khóa học về:</p>
                         <ul class="list-disc ml-6 mt-2">
-                            <li>Lập trình web (Frontend & Backend)</li>
-                            <li>Phát triển ứng dụng di động</li>
-                            <li>Trí tuệ nhân tạo & Machine Learning</li>
+                            <li data-translate="course_1">Lập trình web (Frontend & Backend)</li>
+                            <li data-translate="course_2">Phát triển ứng dụng di động</li>
+                            <li data-translate="course_3">Trí tuệ nhân tạo & Machine Learning</li>
                         </ul>
                         <div class="mt-4 flex gap-4">
                             <button class="helpful-btn">
-                                <i class="far fa-thumbs-up"></i> Hữu ích
+                                <i class="far fa-thumbs-up"></i> 
+                                <span data-translate="helpful">Hữu ích</span>
                             </button>
                             <button class="share-btn">
-                                <i class="fas fa-share"></i> Chia sẻ
+                                <i class="fas fa-share"></i> 
+                                <span data-translate="share">Chia sẻ</span>
                             </button>
                         </div>
                     </div>
@@ -644,17 +650,17 @@
         <!-- Load More Button -->
         <div class="flex justify-center mt-8">
             <button class="load-more-btn">
-                Xem thêm câu hỏi
+                <span data-translate="load_more">Xem thêm câu hỏi</span>
                 <i class="fas fa-chevron-down"></i>
             </button>
         </div>
 
         <!-- Contact Support -->
         <div class="text-center mt-12">
-            <p class="text-gray-600 mb-4">Không tìm thấy câu trả lời bạn cần?</p>
+            <p class="text-gray-600 mb-4" data-translate="no_answer_found">Không tìm thấy câu trả lời bạn cần?</p>
             <button class="contact-support-btn">
                 <i class="fas fa-headset"></i>
-                Liên hệ hỗ trợ
+                <span data-translate="contact_support">Liên hệ hỗ trợ</span>
             </button>
         </div>
     </div>

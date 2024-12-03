@@ -305,7 +305,25 @@ const translations = {
         newsletter: "Đăng Ký Nhận Tin",
         newsletter_description: "Nhận thông tin mới nhất về khóa học và công nghệ",
         subscribe: "Đăng Ký",
-        copyright: "© 2024 HuuLong Academy. All rights reserved."
+        copyright: "© 2024 HuuLong Academy. All rights reserved.",
+        //FAQ
+        faq_title: "Câu Hỏi Thường Gặp",
+        search_placeholder: "Tìm kiếm câu hỏi...",
+        all: "Tất cả",
+        general: "Chung",
+        courses: "Khóa học",
+        payment: "Thanh toán",
+        faq_question_1: "HuuLong Academy có những khóa học nào?",
+        helpful_count: "14 người thấy hữu ích",
+        faq_answer_1_intro: "Chúng tôi cung cấp các khóa học về:",
+        course_1: "Lập trình web (Frontend & Backend)",
+        course_2: "Phát triển ứng dụng di động",
+        course_3: "Trí tuệ nhân tạo & Machine Learning",
+        helpful: "Hữu ích",
+        share: "Chia sẻ",
+        load_more: "Xem thêm câu hỏi",
+        no_answer_found: "Không tìm thấy câu trả lời bạn cần?",
+        contact_support: "Liên hệ hỗ trợ"
     },
     en: {
         // Navigation
@@ -377,6 +395,24 @@ const translations = {
         newsletter: "Newsletter",
         newsletter_description: "Get the latest updates about courses and technology",
         subscribe: "Subscribe",
-        copyright: "© 2024 HuuLong Academy. All rights reserved."
+        copyright: "© 2024 HuuLong Academy. All rights reserved.",
+        //FAQ
+        faq_title: "Frequently Asked Questions",
+        search_placeholder: "Search questions...",
+        all: "All",
+        general: "General",
+        courses: "Courses",
+        payment: "Payment",
+        faq_question_1: "What courses does HuuLong Academy offer?",
+        helpful_count: "14 people found this helpful",
+        faq_answer_1_intro: "We offer courses in:",
+        course_1: "Web Development (Frontend & Backend)",
+        course_2: "Mobile App Development",
+        course_3: "AI & Machine Learning",
+        helpful: "Helpful",
+        share: "Share",
+        load_more: "Load more questions",
+        no_answer_found: "Couldn't find the answer you need?",
+        contact_support: "Contact Support"
     }
 };
