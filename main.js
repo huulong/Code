@@ -1,86 +1,86 @@
-(function() {
-    // // Vô hiệu hóa chuột phải
-    // document.addEventListener('contextmenu', function(e) {
-    //     e.preventDefault();
-    // });
+// (function() {
+//     // Vô hiệu hóa chuột phải
+//     document.addEventListener('contextmenu', function(e) {
+//         e.preventDefault();
+//     });
 
-    // // Vô hiệu hóa phím tắt phổ biến
-    // document.addEventListener('keydown', function(e) {
-    //     // Chặn F12
-    //     if (e.keyCode === 123) {
-    //         e.preventDefault();
-    //         return false;
-    //     }
+//     // Vô hiệu hóa phím tắt phổ biến
+//     document.addEventListener('keydown', function(e) {
+//         // Chặn F12
+//         if (e.keyCode === 123) {
+//             e.preventDefault();
+//             return false;
+//         }
         
-    //     // Chặn Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+Shift+C
-    //     if (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67)) {
-    //         e.preventDefault();
-    //         return false;
-    //     }
+//         // Chặn Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+Shift+C
+//         if (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67)) {
+//             e.preventDefault();
+//             return false;
+//         }
         
-    //     // Chặn Ctrl+U (View Source)
-    //     if (e.ctrlKey && e.keyCode === 85) {
-    //         e.preventDefault();
-    //         return false;
-    //     }
-    // });
+//         // Chặn Ctrl+U (View Source)
+//         if (e.ctrlKey && e.keyCode === 85) {
+//             e.preventDefault();
+//             return false;
+//         }
+//     });
 
-    // // Vô hiệu hóa DevTools
-    // function detectDevTools() {
-    //     const widthThreshold = window.outerWidth - window.innerWidth > 160;
-    //     const heightThreshold = window.outerHeight - window.innerHeight > 160;
+//     // Vô hiệu hóa DevTools
+//     function detectDevTools() {
+//         const widthThreshold = window.outerWidth - window.innerWidth > 160;
+//         const heightThreshold = window.outerHeight - window.innerHeight > 160;
         
-    //     if(widthThreshold || heightThreshold) {
-    //         document.body.innerHTML = 'DevTools detected!';
-    //         window.location.href = 'about:blank';
-    //     }
-    // }
+//         if(widthThreshold || heightThreshold) {
+//             document.body.innerHTML = 'DevTools detected!';
+//             window.location.href = 'about:blank';
+//         }
+//     }
 
-    // setInterval(detectDevTools, 1000);
+//     setInterval(detectDevTools, 1000);
 
-    // Chống copy
-    document.addEventListener('copy', function(e) {
-        e.preventDefault();
-        return false;
-    });
+//     // Chống copy
+//     document.addEventListener('copy', function(e) {
+//         e.preventDefault();
+//         return false;
+//     });
 
-    // Chống select text
-    document.addEventListener('selectstart', function(e) {
-        e.preventDefault();
-        return false;
-    });
+//     // Chống select text
+//     document.addEventListener('selectstart', function(e) {
+//         e.preventDefault();
+//         return false;
+//     });
 
-    // Mã hóa strings
-    function encode(str) {
-        return btoa(encodeURIComponent(str));
-    }
+//     // Mã hóa strings
+//     function encode(str) {
+//         return btoa(encodeURIComponent(str));
+//     }
 
-    // Obfuscate code
-    const _0x1a2b3c = {
-        init: function() {
-            this._0x4d5e6f();
-        },
-        _0x4d5e6f: function() {
-            // Your original code here
-        }
-    };
+//     // Obfuscate code
+//     const _0x1a2b3c = {
+//         init: function() {
+//             this._0x4d5e6f();
+//         },
+//         _0x4d5e6f: function() {
+//             // Your original code here
+//         }
+//     };
 
-    // Self-executing function để che giấu scope
-    !function(w,d,t) {
-        _0x1a2b3c.init();
-    }(window, document, setTimeout);
+//     // Self-executing function để che giấu scope
+//     !function(w,d,t) {
+//         _0x1a2b3c.init();
+//     }(window, document, setTimeout);
 
-    // Console warning
-    console.log(
-        '%cStop!', 
-        'color: red; font-size: 30px; font-weight: bold;'
-    );
-    console.log(
-        '%cThis is a browser feature intended for developers. If someone told you to copy-paste something here, it is likely a scam.', 
-        'font-size: 16px;'
-    );
+//     // Console warning
+//     console.log(
+//         '%cStop!', 
+//         'color: red; font-size: 30px; font-weight: bold;'
+//     );
+//     console.log(
+//         '%cThis is a browser feature intended for developers. If someone told you to copy-paste something here, it is likely a scam.', 
+//         'font-size: 16px;'
+//     );
 
-})();
+// })();
 
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize language from localStorage or default to Vietnamese
