@@ -1,21 +1,37 @@
 /* Base styles */
 html {
     scroll-behavior: smooth;
-    scrollbar-width: thin;
-    scrollbar-color: #4299e1 #cbd5e0;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
 }
 
+html::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+    width: 0;
+    height: 0;
+}
+
+/* Hide scrollbar but keep functionality */
+body {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+    overflow-y: scroll; /* Ensure scrolling still works */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
 body::-webkit-scrollbar {
-    width: 8px;
-}       
-
-body::-webkit-scrollbar-track {
-    background: #cbd5e0;
+    display: none;
+    width: 0;
+    height: 0;
 }
 
-body::-webkit-scrollbar-thumb {
-    background-color: #4299e1;
-    border-radius: 20px;
+* {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+
+*::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
 }
 
 /* Navigation */
