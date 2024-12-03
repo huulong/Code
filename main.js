@@ -1,42 +1,42 @@
 (function() {
-    // Vô hiệu hóa chuột phải
-    document.addEventListener('contextmenu', function(e) {
-        e.preventDefault();
-    });
+    // // Vô hiệu hóa chuột phải
+    // document.addEventListener('contextmenu', function(e) {
+    //     e.preventDefault();
+    // });
 
-    // Vô hiệu hóa phím tắt phổ biến
-    document.addEventListener('keydown', function(e) {
-        // Chặn F12
-        if (e.keyCode === 123) {
-            e.preventDefault();
-            return false;
-        }
+    // // Vô hiệu hóa phím tắt phổ biến
+    // document.addEventListener('keydown', function(e) {
+    //     // Chặn F12
+    //     if (e.keyCode === 123) {
+    //         e.preventDefault();
+    //         return false;
+    //     }
         
-        // Chặn Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+Shift+C
-        if (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67)) {
-            e.preventDefault();
-            return false;
-        }
+    //     // Chặn Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+Shift+C
+    //     if (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67)) {
+    //         e.preventDefault();
+    //         return false;
+    //     }
         
-        // Chặn Ctrl+U (View Source)
-        if (e.ctrlKey && e.keyCode === 85) {
-            e.preventDefault();
-            return false;
-        }
-    });
+    //     // Chặn Ctrl+U (View Source)
+    //     if (e.ctrlKey && e.keyCode === 85) {
+    //         e.preventDefault();
+    //         return false;
+    //     }
+    // });
 
-    // Vô hiệu hóa DevTools
-    function detectDevTools() {
-        const widthThreshold = window.outerWidth - window.innerWidth > 160;
-        const heightThreshold = window.outerHeight - window.innerHeight > 160;
+    // // Vô hiệu hóa DevTools
+    // function detectDevTools() {
+    //     const widthThreshold = window.outerWidth - window.innerWidth > 160;
+    //     const heightThreshold = window.outerHeight - window.innerHeight > 160;
         
-        if(widthThreshold || heightThreshold) {
-            document.body.innerHTML = 'DevTools detected!';
-            window.location.href = 'about:blank';
-        }
-    }
+    //     if(widthThreshold || heightThreshold) {
+    //         document.body.innerHTML = 'DevTools detected!';
+    //         window.location.href = 'about:blank';
+    //     }
+    // }
 
-    setInterval(detectDevTools, 1000);
+    // setInterval(detectDevTools, 1000);
 
     // Chống copy
     document.addEventListener('copy', function(e) {
