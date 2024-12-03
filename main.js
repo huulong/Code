@@ -55,58 +55,40 @@ document.addEventListener('DOMContentLoaded', () => {
     // Mobile Menu Toggle
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
-    const menuSpans = mobileMenuButton.querySelectorAll('span');
-    
     let isOpen = false;
     
-    mobileMenuButton.addEventListener('click', () => {
-        isOpen = !isOpen;
-        
-        // Toggle menu visibility
-        mobileMenu.classList.toggle('hidden');
-        
-        // Animate hamburger icon
-        if (isOpen) {
-            menuSpans[0].style.transform = 'rotate(45deg) translate(0.3rem, 0.3rem)';
-            menuSpans[1].style.opacity = '0';
-            menuSpans[2].style.transform = 'rotate(-45deg) translate(0.3rem, -0.3rem)';
-        } else {
-            menuSpans[0].style.transform = 'rotate(0) translate(0, 0)';
-            menuSpans[1].style.opacity = '1';
-            menuSpans[2].style.transform = 'rotate(0) translate(0, 0)';
-        }
-    });
+    if (mobileMenuButton && mobileMenu) {
+        mobileMenuButton.addEventListener('click', () => {
+            isOpen = !isOpen;
+            mobileMenu.classList.toggle('hidden');
+        });
+    }
     
     // Close menu when clicking outside
     document.addEventListener('click', (e) => {
-        if (isOpen && !mobileMenuButton.contains(e.target) && !mobileMenu.contains(e.target)) {
+        if (isOpen && mobileMenuButton && mobileMenu && !mobileMenuButton.contains(e.target) && !mobileMenu.contains(e.target)) {
             isOpen = false;
             mobileMenu.classList.add('hidden');
-            menuSpans[0].style.transform = 'rotate(0) translate(0, 0)';
-            menuSpans[1].style.opacity = '1';
-            menuSpans[2].style.transform = 'rotate(0) translate(0, 0)';
         }
     });
     
     // Close menu when clicking on a link
-    const mobileMenuLinks = mobileMenu.querySelectorAll('a');
-    mobileMenuLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            isOpen = false;
-            mobileMenu.classList.add('hidden');
-            menuSpans[0].style.transform = 'rotate(0) translate(0, 0)';
-            menuSpans[1].style.opacity = '1';
-            menuSpans[2].style.transform = 'rotate(0) translate(0, 0)';
+    if (mobileMenu) {
+        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                isOpen = false;
+                mobileMenu.classList.add('hidden');
+            });
         });
-    });
+    }
 
     // Language Switcher (Desktop & Mobile)
     const langToggle = document.getElementById('lang-toggle');
     const langDropdown = document.getElementById('lang-dropdown');
+    let isLangOpen = false;
     
     if (langToggle && langDropdown) {
-        let isLangOpen = false;
-        
         langToggle.addEventListener('click', (e) => {
             e.stopPropagation();
             isLangOpen = !isLangOpen;
@@ -128,10 +110,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Mobile Language Switcher
     const mobileLangToggle = document.getElementById('mobile-lang-toggle');
     const mobileLangDropdown = document.getElementById('mobile-lang-dropdown');
+    let isMobileLangOpen = false;
     
     if (mobileLangToggle && mobileLangDropdown) {
-        let isMobileLangOpen = false;
-        
         mobileLangToggle.addEventListener('click', (e) => {
             e.stopPropagation();
             isMobileLangOpen = !isMobileLangOpen;
@@ -152,89 +133,104 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // FAQ Functionality
     const faqItems = document.querySelectorAll('.faq-item');
-    faqItems.forEach(item => {
-        const question = item.querySelector('.faq-question');
-        question.addEventListener('click', () => {
-            const currentlyActive = document.querySelector('.faq-item.active');
-            if (currentlyActive && currentlyActive !== item) {
-                currentlyActive.classList.remove('active');
+    if (faqItems) {
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            if (question) {
+                question.addEventListener('click', () => {
+                    const currentlyActive = document.querySelector('.faq-item.active');
+                    if (currentlyActive && currentlyActive !== item) {
+                        currentlyActive.classList.remove('active');
+                    }
+                    item.classList.toggle('active');
+                });
             }
-            item.classList.toggle('active');
         });
-    });
+    }
 
     // Category Filter
     const categoryBtns = document.querySelectorAll('.category-btn');
-    categoryBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            // Remove active class from all buttons
-            categoryBtns.forEach(b => b.classList.remove('active'));
-            // Add active class to clicked button
-            btn.classList.add('active');
-            
-            const category = btn.dataset.category;
+    if (categoryBtns && faqItems) {
+        categoryBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                categoryBtns.forEach(b => b.classList.remove('active'));
+                // Add active class to clicked button
+                btn.classList.add('active');
+                
+                const category = btn.dataset.category;
+                faqItems.forEach(item => {
+                    if (category === 'all' || item.dataset.category === category) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+    }
+
+    // Search Functionality
+    const searchInput = document.getElementById('faq-search');
+    if (searchInput && faqItems) {
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
             faqItems.forEach(item => {
-                if (category === 'all' || item.dataset.category === category) {
+                const question = item.querySelector('.faq-question span:last-child')?.textContent.toLowerCase();
+                const answer = item.querySelector('.faq-answer')?.textContent.toLowerCase();
+                
+                if (question?.includes(searchTerm) || answer?.includes(searchTerm)) {
                     item.style.display = 'block';
                 } else {
                     item.style.display = 'none';
                 }
             });
         });
-    });
-
-    // Search Functionality
-    const searchInput = document.getElementById('faq-search');
-    searchInput.addEventListener('input', (e) => {
-        const searchTerm = e.target.value.toLowerCase();
-        faqItems.forEach(item => {
-            const question = item.querySelector('.faq-question span:last-child').textContent.toLowerCase();
-            const answer = item.querySelector('.faq-answer').textContent.toLowerCase();
-            
-            if (question.includes(searchTerm) || answer.includes(searchTerm)) {
-                item.style.display = 'block';
-            } else {
-                item.style.display = 'none';
-            }
-        });
-    });
+    }
 
     // Helpful Button Functionality
     const helpfulBtns = document.querySelectorAll('.helpful-btn');
-    helpfulBtns.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            const countElement = btn.closest('.faq-item').querySelector('.helpful-count');
-            let count = parseInt(countElement.textContent);
-            countElement.textContent = `${count + 1} người thấy hữu ích`;
-            countElement.classList.add('updated');
-            setTimeout(() => countElement.classList.remove('updated'), 1000);
-            btn.disabled = true;
+    if (helpfulBtns) {
+        helpfulBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const countElement = btn.closest('.faq-item')?.querySelector('.helpful-count');
+                if (countElement) {
+                    let count = parseInt(countElement.textContent);
+                    countElement.textContent = `${count + 1} người thấy hữu ích`;
+                    countElement.classList.add('updated');
+                    setTimeout(() => countElement.classList.remove('updated'), 1000);
+                    btn.disabled = true;
+                }
+            });
         });
-    });
+    }
 
     // Share Functionality
-    document.querySelectorAll('.share-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-            const faqItem = this.closest('.faq-item');
-            const question = faqItem.querySelector('.faq-question span').textContent;
-            const answer = faqItem.querySelector('.faq-answer-content').textContent;
-            
-            if (navigator.share) {
-                navigator.share({
-                    title: 'FAQ - HuuLong Academy',
-                    text: `${question}\n\n${answer}`,
-                    url: window.location.href
-                });
-            } else {
-                // Fallback copy to clipboard
-                navigator.clipboard.writeText(`${question}\n\n${answer}`);
-                showToast('Đã sao chép vào clipboard!');
-            }
+    const shareBtns = document.querySelectorAll('.share-btn');
+    if (shareBtns) {
+        shareBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const faqItem = this.closest('.faq-item');
+                const question = faqItem?.querySelector('.faq-question span')?.textContent;
+                const answer = faqItem?.querySelector('.faq-answer-content')?.textContent;
+                
+                if (question && answer) {
+                    if (navigator.share) {
+                        navigator.share({
+                            title: 'FAQ - HuuLong Academy',
+                            text: `${question}\n\n${answer}`,
+                            url: window.location.href
+                        });
+                    } else {
+                        // Fallback copy to clipboard
+                        navigator.clipboard.writeText(`${question}\n\n${answer}`);
+                        alert('Đã sao chép vào clipboard!');
+                    }
+                }
+            });
         });
-    });
-
-    // Load More
+    }
 });
 
 // Language translations
