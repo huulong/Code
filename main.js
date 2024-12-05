@@ -597,7 +597,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const volumeSlider = document.getElementById('volumeSlider');
     const volumeControl = document.getElementById('volumeControl');
 
-    if (video && soundButton && volumeSlider) {
+    if (video && soundButton && volumeSlider) { 
         // Video starts unmuted with low volume
         video.muted = false;
         volumeSlider.value = 0.2;  // Set slider to 20%
