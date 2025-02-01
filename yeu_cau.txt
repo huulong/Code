@@ -1,0 +1,15 @@
+Performance:
+Tối ưu hóa video background
+Lazy loading cho images
+Minify CSS/JS
+SEO:
+Thêm structured data (JSON-LD)
+Tối ưu hóa meta description
+UX/UI:
+Thêm loading indicators
+Cải thiện dark mode
+Thêm animations mượt mà
+Functionality:
+Thêm system theme detection
+Cải thiện form validation
+Tích hợp analytics
